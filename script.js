@@ -87,24 +87,19 @@ window.addEventListener('DOMContentLoaded', () => {
 // Create floating hearts and bears
 function createFloatingElements() {
     const container = document.querySelector('.floating-elements');
-    
-    // Create hearts
-    config.floatingEmojis.hearts.forEach(heart => {
+
+    // Create many flowers for a beautiful effect
+    const allFlowers = [...config.floatingEmojis.hearts, ...config.floatingEmojis.bears];
+
+    // Create 30 floating flowers for a lush effect
+    for (let i = 0; i < 30; i++) {
+        const randomFlower = allFlowers[Math.floor(Math.random() * allFlowers.length)];
         const div = document.createElement('div');
         div.className = 'heart';
-        div.innerHTML = heart;
+        div.innerHTML = randomFlower;
         setRandomPosition(div);
         container.appendChild(div);
-    });
-
-    // Create bears
-    config.floatingEmojis.bears.forEach(bear => {
-        const div = document.createElement('div');
-        div.className = 'bear';
-        div.innerHTML = bear;
-        setRandomPosition(div);
-        container.appendChild(div);
-    });
+    }
 }
 
 // Set random position for floating elements
